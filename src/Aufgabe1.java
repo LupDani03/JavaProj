@@ -29,7 +29,7 @@ public class Aufgabe1 {
                 if(Noten[i]%5>2)
                     notenRunden[i]=Noten[i]+(5-Noten[i]%5);
                 else
-                    notenRunden[i]=Noten[i]-Noten[i]%5;
+                    notenRunden[i]=Noten[i];
             else
                 notenRunden[i]=Noten[i];
         return notenRunden;
@@ -45,7 +45,7 @@ public class Aufgabe1 {
     }
 
     public static void main(String[] args) {
-        int[] Noten={21,47,50,66,12,38,37,87,73};
+        int[] Noten={29,37,38,41,84,67};
         System.out.println("Die Noten Array ist: ");
         for(int i=0; i<Noten.length; i++)
             System.out.print(Noten[i]+" ");
@@ -53,7 +53,7 @@ public class Aufgabe1 {
         System.out.println();
 
         //1
-        int[] nichtAusreichenderNoten=nichtAusreichenderNoten(Noten);
+        int[] nichtAusreichenderNoten=nichtAusreichenderNoten(notenRunden(Noten));
         int actualLength=0;
         for(int i=0; i<nichtAusreichenderNoten.length; i++)
             if(nichtAusreichenderNoten[i]>0)
