@@ -51,25 +51,51 @@ public class Aufgabe3 {
     //3
     public static int[] produkt(int[] p1, int number) {
         int[] result = new int[p1.length + 1];
-        int carry=0;
+        int carry=0,negativeFlag=0;
+        if(number==0)
+            return result;
+        else if(number<0) {
+            negativeFlag = 1;
+            number = -number;
+        }
         for(int i=p1.length-1; i>=0; i--) {
             int prod=p1[i]*number+carry;
             carry=prod / 10;
             result[i+1] = prod % 10;
         }
         result[0] = carry;
+        if(negativeFlag==1)
+            for(int i=0; i< result.length; i++) {
+                if(result[i]!=0) {
+                    result[i] *= -1;
+                    break;
+                }
+            }
         return result;
     }
 
     //4
     public static int[] division(int[] div1, int number) {
         int[] result = new int[div1.length];
-        int rest=0;
+        int rest=0,negativeFlag=0;
+        if(number==0)
+            return result;
+        else if(number<0) {
+            negativeFlag = 1;
+            number = -number;
+        }
         for(int i=0; i< div1.length; i++) {
             int current=rest*10+div1[i];
             result[i]=current/number;
             rest=current%number;
         }
+        if(negativeFlag==1)
+            for(int i=0; i< result.length; i++) {
+                if(result[i]!=0) {
+                    result[i] *= -1;
+                    break;
+                }
+            }
         return result;
     }
 
